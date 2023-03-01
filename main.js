@@ -57,6 +57,8 @@ async function main() {
     "checkout",
     core.getInput("branchName") || github.base_ref,
   ]);
+  await exec.exec("git", ["reset", "--hard"]);
+  await exec.exec("git", ["clean", "-fxd"]);
   core.debug("Checked out to base branch");
   await exec.exec(
     "cargo",
