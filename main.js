@@ -54,13 +54,17 @@ async function main() {
   );
   core.debug('Changes benchmarked');
   await exec.exec('git', ['fetch']);
+
+  core.debug('Checked out files...');
+  if (inputs.checkoutFiles && inputs.checkoutFiles.length > 0) {
+    await exec.exec('git', ['checkout', ...inputs.checkoutFiles]);
+  }
+
   await exec.exec('git', [
     'checkout',
     core.getInput('branchName') || github.base_ref,
   ]);
-  if (inputs.checkoutFiles && inputs.checkoutFiles.length > 0) {
-    await exec.exec('git', ['checkout', ...inputs.checkoutFiles]);
-  }
+ 
   core.debug('Checked out to base branch');
   await exec.exec(
     'cargo',
