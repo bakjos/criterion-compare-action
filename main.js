@@ -64,7 +64,9 @@ async function main() {
     'checkout',
     core.getInput('branchName') || github.base_ref,
   ]);
- 
+
+  await exec.exec('git', ['submodule', 'update', '--init', '--recursive']);
+
   core.debug('Checked out to base branch');
   await exec.exec(
     'cargo',
