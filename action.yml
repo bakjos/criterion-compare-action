@@ -30,9 +30,13 @@ inputs:
     required: false
     default: true
   checkoutFiles:
-    description: "Additional scripts to execute before downloading the reference branch"
+    description: "List of files to checkout before running the benchmarks"
     required: false
     default: "" 
+  beforeBaseBenchScript:
+    description: "Additional scripts to execute before running the base branch benchmarks"
+    required: false
+    default: ""
 runs:
   using: "node16"
   main: "dist/index.js"
