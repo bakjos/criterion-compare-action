@@ -70,7 +70,7 @@ async function main() {
 
   if (inputs.beforeBaseBenchScript) {
     core.debug("Running beforeBaseBenchScript...");
-    await exec.exec('bash', ['-c', ], inputs.beforeBaseBenchScript);
+    await exec.exec("bash", ["-c", inputs.beforeBaseBenchScript]);
   }
 
   core.debug("Checked out to base branch");
